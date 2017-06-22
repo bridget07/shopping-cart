@@ -4,7 +4,7 @@
 var vm =new Vue({
     el: "#app",
     data: {
-        title: "hello gsh"
+        productList: []
     },
     filters: {
 
@@ -14,7 +14,10 @@ var vm =new Vue({
     },
     methods: {
         cartView: function () {
-            this.title = "gshgshhello"
+            this.$http.get("data/cartData.json",{"id": 123}).then(res => {
+                this.productList = res.body.result.list
+
+            })
         }
     }
 })
